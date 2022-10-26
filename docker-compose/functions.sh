@@ -89,7 +89,7 @@ function destroy_project(){
 function restart(){
     docker-compose down
     prune
-    ./start_development.sh
+    source start.sh
     docker attach vale_gas-app
 }
 

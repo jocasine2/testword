@@ -1,0 +1,1 @@
+/usr/local/bin/postgres "-c" "fsync=false" "-c" "full_page_writes=off"
