@@ -114,6 +114,9 @@ function permissions_update(){
     sudo chown -R $USER:$USER docker-compose/functions.sh
     sudo chown -R $USER:$USER config/master.key
     sudo chown -R $USER:$USER db/migrate
+    sudo chown -R $USER:$USER config/application.rb
+    sudo chown -R $USER:$USER config/initializers/devise.rb
+    sudo chown -R $USER:$USER config/routes.rb
     echo permissões atualisadas!
 }
 
