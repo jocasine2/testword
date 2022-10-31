@@ -2,14 +2,14 @@
 #adicionando funções ao bash
 source docker-compose/functions.sh
 
+#adicionando usuário ao grupo docker
+user_docker
+
 #iniciando banco de dados
 sudo docker-compose up -d
 
-#corrigindo permissões
-se_existe ./config/master.key sudo chmod 777 ./config/master.key 
-sudo chmod 777 -R "$(pwd)/tmp/db"
+#atualizando permissões
+permissions_update
 
-#docker-compose run app sed -i "7c CMD exec docker-compose/start.sh" Dockerfile
+#sudo docker-compose up -d postgres
 
-#reiniciando containers para aplicar as alterações
-sudo chmod 777 -R "$(pwd)/tmp/db"

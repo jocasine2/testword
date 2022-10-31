@@ -1,30 +1,40 @@
 <p align="center"><a href="https://rubyonrails.org/" target]="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Ruby_On_Rails_Logo.svg/1200px-Ruby_On_Rails_Logo.svg.png" width="400"></a></p>
 
-<h1 align="center">Yay! You’re on Rails!</h1>
+<h2 align="center">Yay! You’re on Rails!</h2>
 
-## Iniciando o docker-compose e atualizando as dependências
-```
-source start_development.sh
-```
-## localhost
+<br><br>
 
+# Atualize o repositório e depois a branch local
+Descarte todas as alterções locais pra ficar igual a branch remota atualizada
+```
+git reset --hard origin/main
+```
+# Para iniciar execute o bashcript start.sh
+```
+source start.sh
+```
+# Atualize as dependencias (gems)
+```
+app bundle
+```
+# Crie o banco de dados
+```
+app rails db:create
+```
+# Migre as tablas para o bd
+```
+app rails db:migrate
+```
+# Criando um modelo (MVC) de exemplo e migrando para o bd
+```
+app scaffold Pessoa nome:string cpf:string && app rails db:migrate
+```
+# Localhost
 [http://localhost:3000/](http://localhost:3000/)
 
-## logs do container
-```
-docker attach system_name-app
-```
+# Comandos úteis
 
-### OPERAÇÃO
-#### CRIAR NOVA APLICAÇÃO
+## Destruindo o Scaffold Pessoa
 ```
-docker-compose run app rails new ../app
-```
-#### CRIAR NOVA APLICAÇÃO EM MODO API
-```
-docker-compose run app rails new ../app --api
-```
-#### CRIANDO O BANCO DE DADOS
-```
-docker-compose run app rails db:create
+app rails destroy scaffold Pessoa
 ```
