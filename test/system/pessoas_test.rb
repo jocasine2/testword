@@ -14,7 +14,6 @@ class PessoasTest < ApplicationSystemTestCase
     visit pessoas_url
     click_on "New Pessoa"
 
-    fill_in "Cpf", with: @pessoa.cpf
     fill_in "Nome", with: @pessoa.nome
     click_on "Create Pessoa"
 
@@ -26,7 +25,6 @@ class PessoasTest < ApplicationSystemTestCase
     visit pessoas_url
     click_on "Edit", match: :first
 
-    fill_in "Cpf", with: @pessoa.cpf
     fill_in "Nome", with: @pessoa.nome
     click_on "Update Pessoa"
 

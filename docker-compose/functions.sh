@@ -117,6 +117,7 @@ function permissions_update(){
     sudo chown -R $USER:$USER config/application.rb
     sudo chown -R $USER:$USER config/initializers/devise.rb
     sudo chown -R $USER:$USER config/routes.rb
+    sudo chown -R $USER:$USER config/environments/development.rb
     echo permissões atualisadas!
 }
 

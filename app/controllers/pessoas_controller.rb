@@ -1,16 +1,22 @@
 class PessoasController < ApplicationController
-  before_action :set_pessoa, only: [:show, :update, :destroy]
+  before_action :set_pessoa, only: [:show, :edit, :update, :destroy]
 
   # GET /pessoas
   def index
     @pessoas = Pessoa.all
-
-    render json: @pessoas
   end
 
   # GET /pessoas/1
   def show
-    render json: @pessoa
+  end
+
+  # GET /pessoas/new
+  def new
+    @pessoa = Pessoa.new
+  end
+
+  # GET /pessoas/1/edit
+  def edit
   end
 
   # POST /pessoas
@@ -18,24 +24,25 @@ class PessoasController < ApplicationController
     @pessoa = Pessoa.new(pessoa_params)
 
     if @pessoa.save
-      render json: @pessoa, status: :created, location: @pessoa
+      redirect_to @pessoa, notice: 'Pessoa was successfully created.'
     else
-      render json: @pessoa.errors, status: :unprocessable_entity
+      render :new
     end
   end
 
   # PATCH/PUT /pessoas/1
   def update
     if @pessoa.update(pessoa_params)
-      render json: @pessoa
+      redirect_to @pessoa, notice: 'Pessoa was successfully updated.'
     else
-      render json: @pessoa.errors, status: :unprocessable_entity
+      render :edit
     end
   end
 
   # DELETE /pessoas/1
   def destroy
     @pessoa.destroy
+    redirect_to pessoas_url, notice: 'Pessoa was successfully destroyed.'
   end
 
   private
@@ -46,6 +53,6 @@ class PessoasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pessoa_params
-      params.require(:pessoa).permit(:name, :cpf)
+      params.require(:pessoa).permit(:nome)
     end
 end

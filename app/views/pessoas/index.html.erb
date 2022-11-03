@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Cpf</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
     <% @pessoas.each do |pessoa| %>
       <tr>
         <td><%= pessoa.nome %></td>
-        <td><%= pessoa.cpf %></td>
         <td><%= link_to 'Show', pessoa %></td>
         <td><%= link_to 'Edit', edit_pessoa_path(pessoa) %></td>
         <td><%= link_to 'Destroy', pessoa, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -6,33 +6,43 @@ class PessoasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get pessoas_url, as: :json
+    get pessoas_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get new_pessoa_url
     assert_response :success
   end
 
   test "should create pessoa" do
     assert_difference('Pessoa.count') do
-      post pessoas_url, params: { pessoa: { cpf: @pessoa.cpf, name: @pessoa.name } }, as: :json
+      post pessoas_url, params: { pessoa: { nome: @pessoa.nome } }
     end
 
-    assert_response 201
+    assert_redirected_to pessoa_url(Pessoa.last)
   end
 
   test "should show pessoa" do
-    get pessoa_url(@pessoa), as: :json
+    get pessoa_url(@pessoa)
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get edit_pessoa_url(@pessoa)
     assert_response :success
   end
 
   test "should update pessoa" do
-    patch pessoa_url(@pessoa), params: { pessoa: { cpf: @pessoa.cpf, name: @pessoa.name } }, as: :json
-    assert_response 200
+    patch pessoa_url(@pessoa), params: { pessoa: { nome: @pessoa.nome } }
+    assert_redirected_to pessoa_url(@pessoa)
   end
 
   test "should destroy pessoa" do
     assert_difference('Pessoa.count', -1) do
-      delete pessoa_url(@pessoa), as: :json
+      delete pessoa_url(@pessoa)
     end
 
-    assert_response 204
+    assert_redirected_to pessoas_url
   end
 end
